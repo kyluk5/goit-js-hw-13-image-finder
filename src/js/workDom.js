@@ -28,6 +28,9 @@ function inguiry(e) {
       if (data.total > 0) {
         document.querySelector('.load_more').classList.remove('hidden');
       }
+      if (data.total === 0) {
+        document.querySelector('.load_more').classList.add('hidden');
+      }
     })
     .catch(err => console.warn(err));
 }

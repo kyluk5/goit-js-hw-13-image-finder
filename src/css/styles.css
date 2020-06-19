@@ -30,15 +30,13 @@ body {
   height: 35px;
   border-radius: 8px;
   border-color: beige;
+  outline-color: yellowgreen;
   box-shadow: 8px 8px #dedede;
 }
 .gallery {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-}
-.photo-card {
-  margin-right: 40px;
 }
 img {
   width: 400px;
