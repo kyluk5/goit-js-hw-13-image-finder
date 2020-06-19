@@ -43,8 +43,21 @@ body {
 img {
   width: 400px;
   border-radius: 8px;
+  box-shadow: 6px 6px 4px 4px;
 }
 .stats {
   display: flex;
   justify-content: space-between;
+}
+.load_more {
+  display: block;
+  margin: 0 auto;
+  width: 150px;
+  height: 35px;
+  border-radius: 8px;
+  outline: none;
+  font-family: 'Orbitron', sans-serif;
+}
+.hidden {
+  display: none;
 }
