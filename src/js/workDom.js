@@ -11,9 +11,20 @@ document.body.insertAdjacentHTML('beforeend', loadMore());
 // =========================================================
 const galleruUl = document.querySelector('.gallery');
 const input = document.querySelector('.image-input');
+const more = document.querySelector('.load_more');
 // =========================================================
 input.addEventListener('input', debounce(inguiry, 500));
-// =========================================================
+more.addEventListener('click', load_more);
+// ==============================counter==================================
+let Counter = function () {
+  let i = 1;
+  return function () {
+    return (i += 1);
+  };
+};
+
+let counter = Counter();
+// =======================reguest_information=============================
 function inguiry(e) {
   e.preventDefault();
   galleruUl.innerHTML = '';
@@ -21,7 +32,7 @@ function inguiry(e) {
     document.querySelector('.load_more').classList.add('hidden');
     return;
   }
-  pixabayApi([e.target.value], [])
+  pixabayApi(input.value)
     .then(data => {
       const object = data.hits.map(item => image_card(item)).join('');
       galleruUl.insertAdjacentHTML('beforeend', object);
@@ -33,4 +44,17 @@ function inguiry(e) {
       }
     })
     .catch(err => console.warn(err));
+}
+// ========================more_informatin=================================
+function load_more() {
+  pixabayApi(input.value, [counter()]).then(data => {
+    let load = data.hits.map(item => image_card(item)).join('');
+    galleruUl.insertAdjacentHTML('beforeend', load);
+    if (data.total > 0) {
+      document.querySelector('.load_more').classList.remove('hidden');
+    }
+    if (data.total === 0) {
+      document.querySelector('.load_more').classList.add('hidden');
+    }
+  });
 }
