@@ -27,6 +27,7 @@ let counter = Counter();
 // =======================reguest_information=============================
 function inguiry(e) {
   e.preventDefault();
+  counter = Counter();
   galleruUl.innerHTML = '';
   if (e.target.value === '') {
     document.querySelector('.load_more').classList.add('hidden');
