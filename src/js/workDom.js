@@ -4,6 +4,7 @@ import image_card from '../templates/image_card.hbs';
 import loadMore from '../templates/loadMore.hbs';
 import debounce from 'lodash.debounce';
 import pixabayApi from './apiService';
+import scrollDown from './scrollDown';
 // =========================================================
 document.body.insertAdjacentHTML('beforeend', search_form());
 document.body.insertAdjacentHTML('beforeend', gallery());
@@ -58,12 +59,5 @@ function load_more() {
     if (data.total === 0) {
       document.querySelector('.load_more').classList.add('hidden');
     }
-  });
-}
-// ==========================scroll========================================
-function scrollDown() {
-  window.scrollBy({
-    top: window.innerHeight,
-    behavior: 'smooth',
   });
 }
