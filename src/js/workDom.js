@@ -15,6 +15,7 @@ const more = document.querySelector('.load_more');
 // =========================================================
 input.addEventListener('input', debounce(inguiry, 500));
 more.addEventListener('click', load_more);
+more.addEventListener('click', debounce(scrollDown, 500));
 // ==============================counter==================================
 let Counter = function () {
   let i = 1;
@@ -57,5 +58,12 @@ function load_more() {
     if (data.total === 0) {
       document.querySelector('.load_more').classList.add('hidden');
     }
+  });
+}
+// ==========================scroll========================================
+function scrollDown() {
+  window.scrollBy({
+    top: window.innerHeight,
+    behavior: 'smooth',
   });
 }
